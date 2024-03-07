@@ -27,6 +27,14 @@ if (app.Environment.IsDevelopment())
     });
 }
 
+// Configure CORS
+app.UseCors(options =>
+{
+    options.WithOrigins("http://localhost:52972")
+        .AllowAnyHeader()
+        .AllowAnyMethod();
+});
+
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
