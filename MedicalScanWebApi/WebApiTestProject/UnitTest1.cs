@@ -1,7 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-
-namespace WebApiTestProject
+﻿namespace WebApiTestProject
 {
     [TestClass]
     public class UnitTest1
