@@ -66,21 +66,22 @@
                 }
             }
 
-            public async Task<ProductModel> GetProductById(int id)
+        public async Task<ProductModel> GetProductById(int id)
+        {
+            try
             {
-                try
-                {
-                    List<ProductModel> products = await GetAllProducts();
-                    return products?.Find(p => p.Id == id);
-                }
-                catch (Exception ex)
-                {
-                    // Handle exception
-                    throw new Exception("Error occurred while getting product by ID.", ex);
-                }
+                List<ProductModel> products = await GetAllProducts();
+                return products.Find(p => p.Id == id);
             }
+            catch (Exception ex)
+            {
+                // Handle exception
+                throw new Exception("Error occurred while getting product by ID.", ex);
+            }
+        }
 
-            public async Task<ProductModel> UpdateProduct(int id, ProductModel model)
+
+        public async Task<ProductModel> UpdateProduct(int id, ProductModel model)
             {
                 try
                 {

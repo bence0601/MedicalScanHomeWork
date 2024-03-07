@@ -65,15 +65,18 @@ namespace PageServiceTests
         public async Task GetProductById_ExistingProductId_ReturnsProduct()
         {
             // Arrange
-            var existingProductId = 1;
-            var expectedProduct = new ProductModel { Id = existingProductId, Name = "Test Product", Price = 10.99m };
+            var IdValue = 1;
+            var NameValue = "Test Product";
+            var PriceValue = 10.99m;
+
+            var model = new ProductModel { Id = IdValue, Name = NameValue, Price = PriceValue };
+            var result = await _pageService.CreateNewProduct(model);
 
             // Act
-            var product = await _pageService.GetProductById(existingProductId);
+            var product = await _pageService.GetProductById(IdValue);
 
             // Assert
-            Assert.IsNotNull(product);
-            Assert.AreEqual(existingProductId, product.Id);
+            Assert.AreEqual(product.Id, model.Id);
         }
 
 
