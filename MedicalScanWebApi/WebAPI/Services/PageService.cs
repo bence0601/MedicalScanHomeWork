@@ -9,7 +9,7 @@
     {
         public class PageService : IPageService
         {
-            private readonly string _filePath = "ProductData.json";
+            private readonly string _filePath = "C:\\GitHubRepos\\MedicalScanHomeWork\\MedicalScanWebApi\\WebAPI\\Data\\ProductData.json";
 
             public async Task<List<ProductModel>> CreateNewProduct(ProductModel model)
             {
