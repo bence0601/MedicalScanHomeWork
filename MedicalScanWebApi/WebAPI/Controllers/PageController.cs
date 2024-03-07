@@ -4,15 +4,14 @@ using WebAPI.Services;
 
 namespace WebAPI.Controllers
 {
-    public class PageController
-    {
-        [Route("api/[controller]")]
+    
         [ApiController]
-        public class ProductController : ControllerBase
+        [Route("[controller]")]
+        public class PageController : ControllerBase
         {
             private readonly IPageService _pageService;
 
-            public ProductController(IPageService pageService)
+            public PageController(IPageService pageService)
             {
                 _pageService = pageService;
             }
@@ -60,5 +59,5 @@ namespace WebAPI.Controllers
                 return Ok(products);
             }
         }
-    }
+    
 }
