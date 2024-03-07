@@ -49,8 +49,8 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ProductControllerTest.cs" />
-    <Compile Include="ProductServiceTest.cs" />
+    <Compile Include="PageControllerTest.cs" />
+    <Compile Include="PageServiceTest.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

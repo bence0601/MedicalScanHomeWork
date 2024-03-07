@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WebApiTestProject
 {
-    internal class ProductServiceTest
+    internal class PageServiceTest
     {
     }
 }
