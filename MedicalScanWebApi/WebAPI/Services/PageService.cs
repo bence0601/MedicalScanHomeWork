@@ -1,32 +1,67 @@
-﻿using WebAPI.Models;
+﻿using System.Text.Json;
+using WebAPI.Models;
 
 namespace WebAPI.Services
 {
     public class PageService : IPageService
     {
-        public Task<List<ProductModel>> CreateNewProduct(ProductModel model)
+        private readonly string _filePath = "ProductData.json";
+
+        public async Task<List<ProductModel>> CreateNewProduct(ProductModel model)
         {
-            throw new NotImplementedException();
+            List<ProductModel> products = await GetAllProducts();
+            products ??= new List<ProductModel>();
+            products.Add(model);
+            await WriteToFile(products);
+            return products;
         }
 
-        public Task<List<ProductModel>> DeleteProduct(int id)
+        public async Task<List<ProductModel>> DeleteProduct(int id)
         {
-            throw new NotImplementedException();
+            List<ProductModel> products = await GetAllProducts();
+            products?.RemoveAll(p => p.Id == id);
+            await WriteToFile(products);
+            return products;
         }
 
-        public Task<List<ProductModel>> GetAllProducts()
+        public async Task<List<ProductModel>> GetAllProducts()
         {
-            throw new NotImplementedException();
+            if (!File.Exists(_filePath))
+            {
+                return new List<ProductModel>();
+            }
+
+            using (StreamReader reader = new StreamReader(_filePath))
+            {
+                string json = await reader.ReadToEndAsync();
+                return JsonSerializer.Deserialize<List<ProductModel>>(json);
+            }
         }
 
-        public Task<ProductModel> GetProductById(int id)
+        public async Task<ProductModel> GetProductById(int id)
         {
-            throw new NotImplementedException();
+            List<ProductModel> products = await GetAllProducts();
+            return products?.Find(p => p.Id == id);
         }
 
-        public Task<ProductModel> UpdateProduct(int id, ProductModel model)
+        public async Task<ProductModel> UpdateProduct(int id, ProductModel model)
         {
-            throw new NotImplementedException();
+            List<ProductModel> products = await GetAllProducts();
+            int index = products.FindIndex(p => p.Id == id);
+            if (index != -1)
+            {
+                products[index] = model;
+                await WriteToFile(products);
+                return model;
+            }
+            return null;
+        }
+
+
+        private async Task WriteToFile(List<ProductModel> products)
+        {
+            string json = JsonSerializer.Serialize(products);
+            await File.WriteAllTextAsync(_filePath, json);
         }
     }
 }
