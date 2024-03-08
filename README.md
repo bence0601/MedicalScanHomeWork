@@ -1,4 +1,4 @@
-## Disclaimer: Haven't finished frontend project, because this was the first time using Angular, couldn't learn it in one day.As my CV suggest, I've used React.js for my previous works, which I can link to you, if you're still interested in me. However I can adapt to Angular in the future without any problems, if you decide to move forward with me.
+## Disclaimer: Haven't finished frontend project, because this was the first time using Angular, couldn't learn it in one day.As my CV suggests, I've used React.js for my previous works, which I can link to you, if you're still interested in me. However I can adapt to Angular in the future without any problems, if you decide to move forward with me.
 
 # MedicalScanWebApi
 
